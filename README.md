@@ -50,5 +50,9 @@ cargo run -- query_update
 cargo run -- query_delete
 ```
 
+CLI commands running Suvessfully 
+![alt text](cli_run.jpg)
+
+
 # Data Flow Schema
 ![alt text](<Project Schema.jpg>)
