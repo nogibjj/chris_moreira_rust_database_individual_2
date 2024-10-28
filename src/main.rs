@@ -1,13 +1,10 @@
 use chris_moreira_rust_database_individual_2::{
-    extract, create_table, load_data_from_csv, query_create,
-    query_read, query_update, query_delete,
+    create_table, extract, load_data_from_csv, query_create, query_delete, query_read, query_update,
 };
 use rusqlite::Connection;
 use std::time::Instant;
 
-fn main_results(
-    conn: &Connection,
-) -> Result<(), Box<dyn std::error::Error>> {
+fn main_results(conn: &Connection) -> Result<(), Box<dyn std::error::Error>> {
     std::fs::create_dir_all("../data")?;
 
     let url = concat!(
@@ -26,10 +23,7 @@ fn main_results(
         create_result, create_duration
     );
 
-    let load_result = load_data_from_csv(
-        &conn,
-        "../data/Spotify_Most_Streamed_Songs.csv",
-    );
+    let load_result = load_data_from_csv(&conn, "../data/Spotify_Most_Streamed_Songs.csv");
     println!("Load Result: {:?}", load_result);
 
     let create_query_result = query_create(&conn);

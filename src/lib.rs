@@ -1,9 +1,9 @@
-use rusqlite::{params, Connection, Result};
 use csv::ReaderBuilder;
-use std::fs::File;
-use std::error::Error;
-use std::io::Write;
 use reqwest;
+use rusqlite::{params, Connection, Result};
+use std::error::Error;
+use std::fs::File;
+use std::io::Write;
 use std::time::Instant;
 
 pub fn extract(url: &str, file_path: &str) -> Result<(), Box<dyn Error>> {
@@ -47,10 +47,7 @@ pub fn create_table(conn: &Connection) -> Result<()> {
     Ok(())
 }
 
-pub fn load_data_from_csv(
-    conn: &Connection,
-    file_path: &str,
-) -> Result<(), Box<dyn Error>> {
+pub fn load_data_from_csv(conn: &Connection, file_path: &str) -> Result<(), Box<dyn Error>> {
     let file = File::open(file_path)?;
     let mut rdr = ReaderBuilder::new().from_reader(file);
     let insert_query = "INSERT INTO SpotifyDB (
@@ -66,11 +63,26 @@ pub fn load_data_from_csv(
         conn.execute(
             insert_query,
             params![
-                &record[0], &record[1], &record[2], &record[3],
-                &record[4], &record[5], &record[6], &record[7],
-                &record[8], &record[9], &record[10], &record[11],
-                &record[12], &record[13], &record[14], &record[15],
-                &record[16], &record[17], &record[18], &record[19]
+                &record[0],
+                &record[1],
+                &record[2],
+                &record[3],
+                &record[4],
+                &record[5],
+                &record[6],
+                &record[7],
+                &record[8],
+                &record[9],
+                &record[10],
+                &record[11],
+                &record[12],
+                &record[13],
+                &record[14],
+                &record[15],
+                &record[16],
+                &record[17],
+                &record[18],
+                &record[19]
             ],
         )?;
     }
@@ -91,8 +103,25 @@ pub fn query_create(conn: &Connection) -> Result<()> {
     conn.execute(
         sql,
         params![
-            "Sample Song", "Sample Artist", 1, 2024, 10, 3, 400, 100,
-            150000000, 200, "C#", "Major", 60, 70, 80, 10, 0, 20, 5,
+            "Sample Song",
+            "Sample Artist",
+            1,
+            2024,
+            10,
+            3,
+            400,
+            100,
+            150000000,
+            200,
+            "C#",
+            "Major",
+            60,
+            70,
+            80,
+            10,
+            0,
+            20,
+            5,
             "https://sampleurl.com"
         ],
     )?;
