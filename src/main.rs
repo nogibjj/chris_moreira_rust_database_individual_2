@@ -1,9 +1,8 @@
 use chris_moreira_rust_database_individual_2::{
-    create_table, extract, load_data_from_csv, query_delete, 
-    query_read, query_update,
+    create_table, extract, load_data_from_csv, query_delete, query_read, query_update,
 };
-use rusqlite::Connection;
 use clap::{Parser, ValueEnum};
+use rusqlite::Connection;
 use std::time::Instant;
 
 /// Enum to define possible CLI actions
@@ -29,10 +28,7 @@ struct Cli {
     action: Action,
 }
 
-fn main_results(
-    conn: &Connection,
-    action: Action,
-) -> Result<(), Box<dyn std::error::Error>> {
+fn main_results(conn: &Connection, action: Action) -> Result<(), Box<dyn std::error::Error>> {
     match action {
         Action::Extract => {
             println!("Extracting data...");
@@ -56,10 +52,7 @@ fn main_results(
         }
         Action::Load => {
             println!("Loading data...");
-            let result = load_data_from_csv(
-                conn,
-                "../data/Spotify_Most_Streamed_Songs.csv",
-            );
+            let result = load_data_from_csv(conn, "../data/Spotify_Most_Streamed_Songs.csv");
             println!("Load Result: {:?}", result);
         }
         Action::QueryRead => {
