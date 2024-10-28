@@ -1,5 +1,6 @@
 use chris_moreira_rust_database_individual_2::{
-    create_table, extract, load_data_from_csv, query_create, query_delete, query_read, query_update,
+    extract, create_table, load_data_from_csv, query_create,
+    query_read, query_update, query_delete,
 };
 use rusqlite::Connection;
 use std::time::Instant;
@@ -16,26 +17,29 @@ fn main_results(conn: &Connection) -> Result<(), Box<dyn std::error::Error>> {
     println!("Extract Result: {:?}", extract_result);
 
     let start_time = Instant::now();
-    let create_result = create_table(&conn);
+    let create_result = create_table(conn);
     let create_duration = start_time.elapsed();
     println!(
         "Create Table Result: {:?}, Duration: {:?}",
         create_result, create_duration
     );
 
-    let load_result = load_data_from_csv(&conn, "../data/Spotify_Most_Streamed_Songs.csv");
+    let load_result = load_data_from_csv(
+        conn,
+        "../data/Spotify_Most_Streamed_Songs.csv",
+    );
     println!("Load Result: {:?}", load_result);
 
-    let create_query_result = query_create(&conn);
+    let create_query_result = query_create(conn);
     println!("Query Create Result: {:?}", create_query_result);
 
-    let read_result = query_read(&conn);
+    let read_result = query_read(conn);
     println!("Read Result: {:?}", read_result);
 
-    let update_result = query_update(&conn);
+    let update_result = query_update(conn);
     println!("Update Result: {:?}", update_result);
 
-    let delete_result = query_delete(&conn);
+    let delete_result = query_delete(conn);
     println!("Delete Result: {:?}", delete_result);
 
     Ok(())

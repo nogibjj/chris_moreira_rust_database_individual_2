@@ -1,5 +1,4 @@
 use csv::ReaderBuilder;
-use reqwest;
 use rusqlite::{params, Connection, Result};
 use std::error::Error;
 use std::fs::File;
