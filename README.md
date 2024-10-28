@@ -29,7 +29,19 @@ cargo check
 cargo add dependency --features dependency_feature
 cargo add dependency
 
+#Checking for Linting Errors and Formatting
+cargo clippy -- -D warnings
+cargo fmt
+cargo fmt -- --check
+
 ```
+# Use of LLM
+- I extensively used Chat GPT in this project to convert my source code from python(used in a previous project) into rust. 
+- The LLMs helped consistently de-bug errors and assure I was running the correct bash syntax to make rust operate adequately. 
+- ChatGPT was also incredibly helpful when debugging my commit errors to Github(formattign and Linting). 
+
+# CLI Examples
+
 
 # Data Flow Schema
 ![alt text](<Project Schema.jpg>)
