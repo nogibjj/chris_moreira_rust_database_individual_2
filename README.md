@@ -3,6 +3,7 @@
 # Project: Making a SQL Database with Rust
 
 # Youtube Link
+https://youtu.be/Y9Aa9_FOEVE
 
 # File Structure
 ![alt text](Project_files.jpg)
