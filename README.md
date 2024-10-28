@@ -40,8 +40,15 @@ cargo fmt -- --check
 - The LLMs helped consistently de-bug errors and assure I was running the correct bash syntax to make rust operate adequately. 
 - ChatGPT was also incredibly helpful when debugging my commit errors to Github(formattign and Linting). 
 
-# CLI Examples
-
+# CLI Run Examples
+```bash
+cargo run -- extract
+cargo run -- create
+cargo run -- load
+cargo run -- query_read
+cargo run -- query_update
+cargo run -- query_delete
+```
 
 # Data Flow Schema
 ![alt text](<Project Schema.jpg>)
